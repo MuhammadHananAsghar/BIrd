@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bird - Muhammad Hanan Asghar</title>
+    <style>
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,700;1,700&display=swap');
+</style>
+    <style>
+      * {
+        box-sizing: border-box;
+        font-family: 'DM Sans', sans-serif;
+      }
+      body {
+        background: #2a2e37;
+        height: 100vh;
+        overflow: hidden;
+      }
+      .txt{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+      #codedisplay{
+        margin-top: 3rem;
+        background-color: #242628;
+        resize: none;
+        height: 100%;
+        width: 80%;
+        border: none;
+        border-radius: 20px;
+        padding: 20px;
+        outline: none;
+        box-shadow: none;
+        color: #fff;
+      }
+      .search {
+        width: 100px;
+        height: 100px;
+        margin: 40px auto 0;
+        background-color: #242628;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.5s ease;
+      }
+      .search:before {
+        content: "";
+        display: block;
+        width: 3px;
+        height: 100%;
+        position: relative;
+        background-color: #00fede;
+        transition: all 0.5s ease;
+      }
+      .search.open {
+        width: 800px;
+      }
+      .search.open:before {
+        height: 60px;
+        margin: 20px 0 20px 30px;
+        position: absolute;
+      }
+      .search-box {
+        width: 100%;
+        height: 100%;
+        box-shadow: none;
+        border: none;
+        background: transparent;
+        color: #fff;
+        padding: 20px 100px 20px 45px;
+        font-size: 20px;
+      }
+      .search-box:focus {
+        outline: none;
+      }
+      .search-button {
+        width: 100px;
+        height: 100px;
+        display: block;
+        position: absolute;
+        right: 0;
+        top: 0;
+        padding: 20px;
+        cursor: pointer;
+      }
+      .search-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 40px;
+        border: 3px solid #00fede;
+        display: block;
+        position: relative;
+        margin-left: 5px;
+        transition: all 0.5s ease;
+      }
+      .headings{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: #00fede;
+      }
+      .headings h3{
+        font-size: 40px;
+        font-weight: 700;
+      }
+      .search-icon:before {
+        content: "";
+        width: 3px;
+        height: 15px;
+        position: absolute;
+        right: -2px;
+        top: 30px;
+        display: block;
+        background-color: #00fede;
+        transform: rotate(-45deg);
+        transition: all 0.5s ease;
+      }
+      .search-icon:after {
+        content: "";
+        width: 3px;
+        height: 15px;
+        position: absolute;
+        right: -12px;
+        top: 40px;
+        display: block;
+        background-color: #00fede;
+        transform: rotate(-45deg);
+        transition: all 0.5s ease;
+      }
+      .open .search-icon {
+        margin: 0;
+        width: 60px;
+        height: 60px;
+        border-radius: 60px;
+      }
+      .open .search-icon:before {
+        transform: rotate(52deg);
+        right: 22px;
+        top: 23px;
+        height: 18px;
+      }
+      .open .search-icon:after {
+        transform: rotate(-230deg);
+        right: 22px;
+        top: 13px;
+        height: 18px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="headings">
+        <h3>Bird</h3>
+        <span>Unleash Your ReactJS Potential with Bird!</span>
+    </div>
+    <br><br>
+    <div class="search">
+      <input type="search" class="search-box" placeholder="How to create app in ReactJS?"/>
+      <span class="search-button">
+        <span class="search-icon"></span>
+      </span>
+    </div>
+
+    <div class="txt">
+        <textarea id="codedisplay" cols="30" rows="18" style="font-size: 20px;">{{displayAble}}</textarea>
+        <br>
+        <span style="color: #fff">Creted by Muhammad Hanan Asghar.</span>
+    </div>
+
+    <script>
+        document.querySelector('.search-button').addEventListener('click', function() {
+          const search = document.querySelector(".search-box");
+          if (search.value !== ""){
+              // get the current URL
+              const urlParams = new URLSearchParams(window.location.search);
+              // set a new parameter with the search value
+              urlParams.set('query', search.value);
+              // update the current URL with the new parameter
+              const newUrl = window.location.pathname + '?' + urlParams.toString();
+              window.location.href = newUrl;
+          }
+          this.parentNode.classList.toggle('open');
+      });
+
+    </script>
+  </body>
+</html>
